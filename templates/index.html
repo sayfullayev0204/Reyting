@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reyting</title>
+    <link rel="icon" href="/media/icon.png" type="png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .category-card {
+            transition: all 0.3s ease-in-out;
+        }
+        .category-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Toifalar</h1>
+        <div class="row">
+            {% for category in bolimlar_list %}
+
+            <div class="col-md-4 mb-4">
+                <a href="{% url 'student_list' category.id %}" style="text-decoration: none;">
+                <div class="card category-card">
+                    <img src="{{ category.img.url }}" class="card-img-top" alt="{{ category.Nomi }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ category.Nomi }}</h5>
+                        <a href="{% url 'student_list' category.id %}" class="btn btn-primary">View Students</a>
+                    </div>
+                </div>
+            </div></a>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

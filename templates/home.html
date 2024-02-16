@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reyting</title>
+    <link rel="icon" href="/media/icon.png" type="png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS */
+        /* Add your custom styles here */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4">Talabalar <a class="text-decoration-none " style="color: rgb(1, 255, 6);  font-size: 30px;" href="{% url 'priz' %}">Sovgalar 🎁</a></h1>     
+        <ul class="list-group" >
+            {% for student in students %}
+            <li class="list-group-item" style="margin-top: 5px; ">
+                <a href="{% url 'student_details' student.id %}" class="text-decoration-none " style="font-size: 24px;"><img src="{{student.avatar.url}}" style="max-width: 45px; border-radius: 50%; " alt="">{{ student.name }} {{ student.surname }}</a>
+                <span class="float-right">⭐{{ student.total_score }}</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Bootstrap JS and jQuery (Optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
